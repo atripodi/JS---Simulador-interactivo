@@ -16,9 +16,11 @@ let totalCompra;
 
 function seleccionarItem() {
 
-    let itemSeleccionado = parseInt(prompt('Seleccione el artículo que desea comprar u opción 4 para salir: \n1 - Taza \n2 - Bowl\n3 - Florero \n4 - Salir', 0));
-
+    
     do {
+
+        let itemSeleccionado = parseInt(prompt('Seleccione el artículo que desea comprar u opción 4 para salir: \n1 - Taza \n2 - Bowl\n3 - Florero \n4 - Salir', 0));
+
         switch (itemSeleccionado) {
             case 1:
                 precio = 300;
@@ -37,6 +39,7 @@ function seleccionarItem() {
                 cantidad = 0;
                 break;
         }  
+
     } while (itemSeleccionado !== 4);
 }
 
@@ -66,12 +69,10 @@ function agregarEnvio(){
             case true:
                 totalCompra = totalSinEnvio + 200;
                 alert ('El costo de envío es de $200. El total de tu compra es $' + totalCompra );
-                seleccionarItem();
                 break;
             case false:
                 totalCompra = totalSinEnvio;
                 alert ('El total de tu compra es de $' + totalCompra);
-                seleccionarItem();
                 break;
         }
 }
