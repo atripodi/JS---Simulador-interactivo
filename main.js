@@ -66,10 +66,12 @@ function agregarEnvio(){
             case true:
                 totalCompra = totalSinEnvio + 200;
                 alert ('El costo de envío es de $200. El total de tu compra es $' + totalCompra );
+                seleccionarItem();
                 break;
             case false:
                 totalCompra = totalSinEnvio;
                 alert ('El total de tu compra es de $' + totalCompra);
+                seleccionarItem();
                 break;
         }
 }
