@@ -4,18 +4,18 @@ let totalSinEnvio;
 let cantidadSeleccionada;
 let precio = 0;
 let stock = 12;
-let costoEnvio;
 let envioDomicilio = false;
 let totalCompra;
+let articulo;
 
-// const inventario = [ 
-//     {id: 1, nombre: "Taza", precio: 300, stock: 5},
-//     {id: 2, nombre: "Bowl", precio: 350, stock: 4},
-//     {id: 3, nombre: "Florero", precio: 400, stock: 4},
-// ]
+const inventario = [ 
+    {id: 1, nombre: "Taza", precio: 300, stock: 5},
+    {id: 2, nombre: "Bowl", precio: 350, stock: 4},
+    {id: 3, nombre: "Florero", precio: 400, stock: 4},
+]
+
 
 function seleccionarItem() {
-
     
     do {
 
@@ -23,8 +23,11 @@ function seleccionarItem() {
 
         switch (itemSeleccionado) {
             case 1:
-                precio = 300;
+                //precio = 300;
+                let articulo = inventario.find ((el) => el.id === 1)
+                console.log(articulo)
                 verificarStock();
+                return articulo;
                 break;
             case 2:
                 precio = 350;
@@ -51,13 +54,16 @@ function verificarStock() {
         alert('Ingrese una cantidad válida');
         verificarStock();
     } else if (cantidadSeleccionada > stock) {
-        alert ('Lo sentimos! No tenemos stock disponible')
+        alert ('Lo sentimos1! No tenemos stock disponible')
         alert ('Nuestro stock actual es de ' + stock + ' unidades.')
     } else {
-        totalSinEnvio = precio * cantidadSeleccionada;
-        alert('Su total sin gastos de envío es: $' + totalSinEnvio);
+        function calcularTotal (articulo, cantidadSeleccionada){
+            totalSinEnvio = articulo["precio"] * cantidadSeleccionada
+            alert('Su total sin gastos de envío es: $' + totalSinEnvio)
+            return totalSinEnvio;
+        }
+        //alert('Su total sin gastos de envío es: $' + totalSinEnvio);
         agregarEnvio();
-        return totalSinEnvio; 
     }
 
 }
@@ -78,5 +84,3 @@ function agregarEnvio(){
 }
 
 seleccionarItem();
-
-
